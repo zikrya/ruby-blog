@@ -51,3 +51,34 @@ Thank you for being here at the beginning of this journey. Here's to many more p
     content_type: "image/jpeg"
   )
 end
+
+second_post = Post.find_by(title: "Getting Started with Web Development")
+
+if !second_post
+  second_post = Post.create(
+    title: "Getting Started with Web Development",
+    body: "Are you interested in learning web development? This comprehensive guide will help you take your first steps into this exciting field.
+
+Web development is a vast and rewarding field that combines creativity with technical skills. Whether you're looking to build personal projects, start a new career, or enhance your current skill set, understanding the basics of web development is incredibly valuable.
+
+Here are some key areas you'll want to focus on when starting your journey:
+
+• HTML - The foundation of web content
+• CSS - Making your content look beautiful
+• JavaScript - Adding interactivity to your websites
+• Backend technologies - Understanding server-side programming
+• Databases - Managing and storing data effectively
+• Version Control - Tracking and managing your code
+
+Remember, every expert was once a beginner. Take it step by step, practice regularly, and don't be afraid to make mistakes - they're valuable learning opportunities!
+
+In future posts, we'll dive deeper into each of these topics and provide practical examples and exercises to help you learn. Stay tuned!",
+  )
+
+  # Attach the image separately after creating the post
+  second_post.banner_image.attach(
+    io: File.open(Rails.root.join("public/newtrain.jpg")),
+    filename: "code.jpg",
+    content_type: "image/jpeg"
+  )
+end

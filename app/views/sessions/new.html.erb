@@ -9,12 +9,14 @@
 
   <h1 class="font-bold text-4xl">Sign in</h1>
 
-  <%= form_with url: session_url, class: "contents" do |form| %>
-    <div class="my-5">
+  <%= form_with url: session_path, class: "login-form" do |form| %>
+    <div class="field">
+      <%= form.label :email_address %>
       <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5">
+    <div class="field">
+      <%= form.label :password %>
       <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
     </div>
 
@@ -29,3 +31,47 @@
     </div>
   <% end %>
 </div>
+
+<% content_for :head do %>
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .login-form .field {
+      margin-bottom: 1rem;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .login-form .actions {
+      margin-top: 1.5rem;
+    }
+
+    .login-form input[type="submit"] {
+      background: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .login-form input[type="submit"]:hover {
+      background: #0056b3;
+    }
+  </style>
+<% end %>
