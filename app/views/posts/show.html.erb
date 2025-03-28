@@ -1,0 +1,73 @@
+<div class="post-container">
+  <article class="post-detail">
+    <% if @post.banner_image.attached? %>
+      <%= image_tag @post.banner_image, class: "post-banner" %>
+    <% end %>
+
+    <h1 class="post-title"><%= @post.title %></h1>
+
+    <div class="post-meta">
+      Posted <%= time_tag @post.created_at.to_date %>
+    </div>
+
+    <div class="post-content">
+      <%= simple_format @post.body %>
+    </div>
+
+    <%= link_to "← Back to Posts", posts_path, class: "back-link" %>
+  </article>
+</div>
+
+<% content_for :head do %>
+  <style>
+    .post-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .post-detail {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+
+    .post-banner {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .post-title {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .post-meta {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .post-content {
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      color: #0056b3;
+    }
+  </style>
+<% end %>

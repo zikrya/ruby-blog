@@ -1,0 +1,53 @@
+<article class="post">
+  <% if post.banner_image.attached? %>
+    <%= image_tag post.banner_image, class: "post-banner" %>
+  <% end %>
+
+  <h2 class="post-title">
+    <%= link_to post.title, post_path(post) %>
+  </h2>
+
+  <div class="post-meta">
+    Posted <%= time_tag post.created_at.to_date %>
+  </div>
+
+  <div class="post-excerpt">
+    <%= truncate(strip_tags(post.body.to_s), length: 200) %>
+  </div>
+
+  <div class="post-actions">
+    <%= link_to "Read More →", post_path(post), class: "read-more-button" %>
+  </div>
+</article>
+
+<% content_for :head do %>
+  <style>
+    .post-actions {
+      margin-top: 1.5rem;
+    }
+
+    .read-more-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+
+    .read-more-button:hover {
+      background-color: #0056b3;
+    }
+
+    .post {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .post-actions {
+      margin-top: auto;
+    }
+  </style>
+<% end %>
